@@ -5,7 +5,7 @@ class ServiceTodo < ActiveRecord::Base
   validates :price,           presence: true, numericality: {greater_than_or_equal_to: 0}
 
   scope :unpaid, -> {where(paid_at: nil)}
-  scope :paid, -> {where.not(paid_at: !nil)}
+  scope :paid, -> {where.not(paid_at: nil)}
   
   def ongoing?
     !started_at.blank?
