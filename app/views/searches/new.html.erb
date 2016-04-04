@@ -1,0 +1,21 @@
+
+<% if current_user.email == "jerrome@gmail.com" %>
+<h3> Advanced Search </h3>
+
+<%= simple_form_for @search do |f| %>
+
+	<div class="form-group">
+
+
+	<%= f.input :car_plate_number %>
+	<%= f.input :car_model%>
+
+
+	<%= f.button :submit, class: 'btn btn-primary' %>
+	<% end %>
+
+<% end %>
+<%= link_to 'Back', cars_todo_lists_path, class: "btn btn-default" %>
+
+
+

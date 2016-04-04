@@ -1,0 +1,43 @@
+<h3> Search Result </h3>
+
+
+<p><% link_to 'Back', new_search_path %> </p>
+
+<% if @search.search_cars_todo_lists.empty? %>
+	<p> No Records Found</p>
+
+<% else %>
+ <div class="well">
+	<table class="table table-striped">
+			<tr>
+			  <th>Car Image</th>
+			  <th>Service #</th>
+			  <th>Car Plate Number </th>
+			  <th>Car Model </th>
+			  <th>Car Owner </th>
+			  <th>Status </th>
+			  <th>Date Added </th>
+			</tr>
+		<% @search.search_cars_todo_lists.each do |cars_todo_list| %>
+		<br>
+  		<td> <%= link_to (image_tag cars_todo_list.image.url(:thumb)), cars_todo_list %> </td>
+              <td> <%= link_to cars_todo_list.id, cars_todo_list %> </td>
+              <td> <%= link_to cars_todo_list.car_plate_number, cars_todo_list %> </td>
+              <td> <%= cars_todo_list.car_model %> </td>
+              <td> <%= cars_todo_list.owner_name %> </td>
+	                <% if cars_todo_list.ready_for_pickup? %>
+	                   <td><font color="green">Car is Ready for Pickup<span class="glyphicon glyphicon-ok-circle"> </span></font></td>
+	                <% elsif cars_todo_list.pickedup?  %>
+	                <td><font color="gray">Car has been Picked-up<span class="glyphicon glyphicon-ok-circle"> </span></font></td>
+	                <% else %>
+	                     <td><font color="#337AB7">Car Service On-Going<span class="glyphicon glyphicon-ok-circle"> </span></font></td>
+	                <% end %>
+               <td><%= cars_todo_list.created_at.strftime("%I:%M %p %B-%d-%Y") %> </td>
+             
+            </tr>
+		</div>
+
+		<% end %>
+	</table>
+</div>
+<% end %>

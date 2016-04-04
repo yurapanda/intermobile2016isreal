@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+
+	  <h3><small>Service Name: <br></small><strong><%= @service.name %></strong></h3>
+	  <hr>
+	  <h3><small>Service Cost: <br></small><strong>PHP <%= @service.cost %>0</strong></h3>
+	</p>
+<hr>
+<% if current_user.email == "jerrome@gmail.com"%>
+<%= link_to 'Edit', edit_service_path(@service), class: "btn btn-default" %> 
+
+<% end %>
+<%= link_to 'Back', services_path, class: "btn btn-default"  %>

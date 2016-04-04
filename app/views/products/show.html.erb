@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<table >
+	  <h3><small>Product Name: <br></small><strong><%= @product.name %></strong></h3>
+	  <hr>
+	  <h3><small>Product Cost: <br></small><strong>PHP <%= @product.price %>0</strong></h3> <hr>
+	  <h3><small>Product Description: <br></small><strong><%= @product.description %></strong></h3> <hr>
+	  <h3><small>Product Availability: <br></small><strong><% if @product.availability == true %>
+            Available
+            <%else %>
+            Not Available
+            <% end %></strong></h3> <hr>
+	
+
+<% if current_user.admin? %>
+<%= link_to 'Edit', edit_product_path(@product), class: "btn btn-default" %> 
+
+<% end %>
+<%= link_to 'Back', products_path, class: "btn btn-default"  %>

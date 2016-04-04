@@ -1,0 +1,22 @@
+ <% if user_signed_in? %>
+<div class="container">
+  <div class="transitions-enabled" id="sidepanel">
+     <div class="box panel panel-default">
+     	
+          <div class="panel-body">
+            <li><strong>Welcome!</strong></li>
+      <% if current_user.email != "jerrome@gmail.com" %>
+			<li><%= current_user.name %></li>
+      <% else %>
+      <li style="color:#98173E"> Admin </li>
+      <% end %>
+  
+			<hr>
+			<li><%= link_to "Change Account Details", edit_user_registration_path %></li>
+			
+          </div>
+      </div>
+  </div>
+</div>
+<% else %>
+<%end %>

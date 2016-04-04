@@ -1,0 +1,39 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<% if current_user.email=="jerrome@gmail.com" %>
+  <%= simple_form_for(@product) do |f| %>
+         <% if @product.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+              <ul>
+              <% @product.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+         <div class="form-group">
+          <%= f.input :name, placeholder: "Name", required: true %>
+          <%= f.input :price, placeholder: "Price", required: true %>
+          <%= f.input :description, placehlolder: "Description", required: true%>
+          <%= f.input :availability %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
+        <%end%>
+  <% end %>
+<% end %>
