@@ -24,7 +24,7 @@
   </div>
   <div class="panel-footer">
 
-<% if current_user.email=="jerrome@gmail.com" %>
+<% if current_user.admin? || current_user.technician? %>
 	<% if service_todo.ongoing? %>
 		<%= link_to "Marked as On-Going", on_going_cars_todo_list_service_todo_path(@cars_todo_list, service_todo.id), method: :patch, data: {confirm: "Are you Sure you want to mark service as ON-GOING?"},class: "btn btn-primary disabled" %>
 	<% else %>
@@ -43,7 +43,9 @@
 	<% if @cars_todo_list.ready_for_pickup? %>
 
 	<% else %>
-	<%= link_to "Delete Service", cars_todo_list_service_todo_path(@cars_todo_list, service_todo.id), method: :delete, data: { confirm: "Are you sure yo want to DELETE service?"},class: "btn btn-danger" %>
+		<% if current_user.admin? %>
+			<%= link_to "Delete Service", cars_todo_list_service_todo_path(@cars_todo_list, service_todo.id), method: :delete, data: { confirm: "Are you sure yo want to DELETE service?"},class: "btn btn-danger" %>
+		<% end %>
 	<%end %>
 <% end %>
   </div>

@@ -8,6 +8,9 @@ class CarsTodoList < ActiveRecord::Base
 #validations
 	validates :image ,					 presence: true
 	validates :car_plate_number, 		 presence: true, length: {maximum: 8, minimum: 1}
+	validates :car_plate_number, format: { with: /[A-Z]{3}-[0-9]{3,4}/,
+    message: "Follow (XXX-999/XXX-9999)" }
+
 	validates :car_model, 		 	     presence: true
 	validates :paid_amount,			 presence: true, numericality: {greater_than_or_equal_to: 0}
 

@@ -7,6 +7,7 @@ class ServiceTodosController < ApplicationController
 		@service_todo = @cars_todo_list.service_todos.create(service_todo_params)
 		
 		if @service_todo.save
+			ServiceTodoMailer.new_service_todo(@service_todo).deliver
 			redirect_to @cars_todo_list, notice: "Added Successfully, Please Update Bill Summary"
 		else
 			redirect_to @cars_todo_list, notice: "Input Error/ Price should be 0 or higher"
@@ -23,16 +24,20 @@ class ServiceTodosController < ApplicationController
 	end
 
 	def completed
+
+		ServiceTodoMailer.completed(@service_todo).deliver
 		@service_todo.update_attribute(:completed_at, Time.now)
 		redirect_to @cars_todo_list, notice: "Service Completed"
 	end 	
 
 	def on_going
+		ServiceTodoMailer.on_going(@service_todo).deliver
 		@service_todo.update_attribute(:started_at, Time.now)
 		redirect_to @cars_todo_list, notice: "Service On-going"
 	end 	
 
 	def paid
+		ServiceTodoMailer.paid(@service_todo).deliver
 		@service_todo.update_attribute(:paid_at, Time.now)
 		redirect_to @cars_todo_list, notice: "Service Paid, Please Update the Bill Balance"
 	end 	

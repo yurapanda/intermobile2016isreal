@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :comments
   
   validates :name, presence: true  , length: {minimum: 3}
+  validates :contact_number,  format: { with: /09[0-9]{2}-[0-9]{3}-[0-9]{4}/,
+    message: "Follow (09xx-xxx-xxxx)" }
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "25x25>" }
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 

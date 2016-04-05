@@ -1,0 +1,20 @@
+
+<p>
+	New Comment On your Car <%= @cars_todo_list.car_plate_number %>:<br>
+
+
+	<blockquote><%= @comment.content %></blockquote>
+
+	<% if @comment.user.admin? %>
+	by: ADMIN
+
+	<% else %>
+	by: Technician
+	<% end %>
+</p>
+<p>
+Check out whats happening to your car at:
+
+<%= link_to  @cars_todo_list.car_plate_number , @cars_todo_list %>
+
+</p>

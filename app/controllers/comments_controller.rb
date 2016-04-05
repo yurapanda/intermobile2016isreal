@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 	
 
 	def create
+
 		@cars_todo_list = CarsTodoList.find(params[:cars_todo_list_id])
 		@comment = Comment.create(params[:comment].permit(:content))
 		@comment.user_id = current_user.id
@@ -11,6 +12,9 @@ class CommentsController < ApplicationController
 
 		if @comment.save
 			redirect_to cars_todo_list_path(@cars_todo_list)
+			if @comment.user.admin? || @comment.user.technician
+				CommentMailer.new_comment(@comment).deliver
+			end
 		else
 			render 'new'
 		end

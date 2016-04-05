@@ -22,9 +22,9 @@ class CarsTodoListsController < ApplicationController
 
   # GET /cars_todo_lists/new
   def new
-    if current_user.admin? 
+    if current_user.admin? || current_user.technician?
       @cars_todo_list = CarsTodoList.new
-      @user = current_user
+     
     else
       redirect_to cars_todo_lists_path
     end
@@ -36,11 +36,13 @@ class CarsTodoListsController < ApplicationController
 
 
   def ready_for_pickup
+    CarsTodoMailer.ready_for_pickup(@cars_todo_list).deliver
     @cars_todo_list.update_attribute(:ready_for_pickup_at, Time.now)
     redirect_to @cars_todo_list, notice: "Car is Ready for Pickup."
   end   
 
   def picked_up
+    CarsTodoMailer.picked_up(@cars_todo_list).deliver
     @cars_todo_list.update_attribute(:pickedup_at, Time.now)
     redirect_to @cars_todo_list, notice: "Car has been pickedup."
   end   

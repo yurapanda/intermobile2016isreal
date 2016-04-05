@@ -5,10 +5,13 @@
      	
           <div class="panel-body">
             <li><strong>Welcome!</strong></li>
-      <% if current_user.email != "jerrome@gmail.com" %>
-			<li><%= current_user.name %></li>
+      <% if current_user.admin? %>
+		   <li style="color:#98173E"> Admin </li>
+       <% elsif current_user.technician? %>
+       <li style="color:#1A711B"> Technician </li>
       <% else %>
-      <li style="color:#98173E"> Admin </li>
+   
+      <li><%= current_user.name %></li>
       <% end %>
   
 			<hr>

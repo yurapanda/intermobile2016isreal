@@ -19,8 +19,9 @@
 <%= f.input :image, required: true %>
 <%= f.input :car_plate_number, required: true %>
 <%= f.input :car_model, required: true %>
-<%= f.association :user %>
-<%= f.input :paid_amount, required: true %>
+<%= f.label :user, 'Select User Email:' %>
+<%= f.collection_select :user_id, User.all, :id, :email  %><br><br>
+<%= f.input :paid_amount,  required: true, label: 'Initial Paid Amount/Down Payment:' %>
 
 
 <%= f.button :submit, class: 'btn btn-primary' %>

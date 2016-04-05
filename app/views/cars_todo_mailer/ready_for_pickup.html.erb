@@ -1,0 +1,11 @@
+
+
+<p>
+  Hi <%= @cars_todo_list.user.email %>, your car <%= @cars_todo_list.car_plate_number %> is now ready for pickup.
+</p>
+<p>
+
+  Check out whats happening to your car at:
+
+<%= link_to  @cars_todo_list.car_plate_number , @cars_todo_list %>
+</p>

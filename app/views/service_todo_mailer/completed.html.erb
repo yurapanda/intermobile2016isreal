@@ -1,0 +1,10 @@
+
+<p>
+	Completed <%= @service_todo.content %> service for your car <%= @cars_todo_list.car_plate_number %>. 
+</p>
+<p>
+Check out whats happening to your car at:
+
+<%= link_to  @cars_todo_list.car_plate_number , @cars_todo_list %>
+
+</p>

@@ -7,6 +7,13 @@ class Ability
      user ||= User.new # guest user (not logged in)
       if user.admin?
         can :manage, :all
+
+      elsif user.technician
+        can :read, :all
+        can :manage, :service_todo
+        can :manage, :cars_todo_lists
+        can :create, :comments
+
       else
          can :read, :all
          can :create, :comments

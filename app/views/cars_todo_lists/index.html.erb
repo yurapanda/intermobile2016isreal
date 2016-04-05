@@ -1,6 +1,6 @@
 <div class="well">
 
-<% if current_user.email == "jerrome@gmail.com" %>
+<% if current_user.admin? || current_user.technician? %>
 <h1 style="color: #4D559A">Cars On Service </h1>
 <%= render 'tableheader' %>
   <%  @cars_todo_lists.each do |cars_todo_list| %>

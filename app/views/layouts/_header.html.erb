@@ -19,7 +19,7 @@
        <% if user_signed_in? %>
        <li><%= link_to "Services" , services_path %></li>
        <li><%= link_to "Products" , products_path %></li>
-         <% if current_user.email == "jerrome@gmail.com"%>
+         <% if current_user.admin? || current_user.technician? %>
              <li><%= link_to "New Car To Service" , new_cars_todo_list_path %></li>
             
              <li><%= link_to "Search" , new_search_path %></li>
@@ -42,8 +42,10 @@
                       <li><%= link_to "Log out", destroy_user_session_path, method: "delete" %></li>
                       <li class="divider">
                       <li><center>Signed in as: 
-                              <% if current_user.email == "jerrome@gmail.com" %>
-                                  <b>Admin</b></li>
+                              <% if current_user.admin? %>
+                                  <b style="color:#98173E">Admin</b></li>
+                                  <% elsif current_user.technician? %>
+                                  <b style="color:#1A711B"><%= current_user.email%></b></li>
                               <%else %>
                                 <%= current_user.email %></li>
                               <% end %>
