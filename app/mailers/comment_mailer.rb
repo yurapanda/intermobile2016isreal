@@ -11,4 +11,11 @@ class CommentMailer < ApplicationMailer
 
 	    mail to: @cars_todo_list.user.email, subject: "New Comment on  #{@cars_todo_list.car_plate_number} "
 	end
+
+  def new_user_comment(comment)
+    @comment = comment
+    @cars_todo_list = @comment.cars_todo_list
+
+    mail to: "jerrome.pelacio@gmail.com" , subject: "New Comment on  #{@cars_todo_list.car_plate_number} by user"
+  end
 end

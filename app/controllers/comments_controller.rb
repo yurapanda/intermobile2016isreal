@@ -14,6 +14,8 @@ class CommentsController < ApplicationController
 			redirect_to cars_todo_list_path(@cars_todo_list)
 			if @comment.user.admin? || @comment.user.technician
 				CommentMailer.new_comment(@comment).deliver
+			else
+				CommentMailer.new_user_comment(@comment).deliver
 			end
 		else
 			render 'new'

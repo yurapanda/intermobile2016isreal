@@ -3,7 +3,7 @@
 <% if current_user.admin? || current_user.technician? %>
 <h1 style="color: #888">Car Service History</h1>
 <%= render 'tableheader' %>
-  <%  @cars_todo_lists.each do |cars_todo_list| %>
+  <%   @cars_todo_lists.order('created_at desc').each  do |cars_todo_list| %>
       <% if cars_todo_list.pickedup? %>
           <tr>
             <td> <%= link_to (image_tag cars_todo_list.image.url(:thumb)), cars_todo_list %> </td>
@@ -21,7 +21,7 @@
 <% else %>
       <h1 style="color: #888">Car Service History</h1>
       <%= render 'tableheader' %>
-        <%  @cars_todo_lists.each do |cars_todo_list| %>
+        <%   @cars_todo_lists.order('created_at desc').each  do |cars_todo_list| %>
         <tr>
             <% if current_user.email == cars_todo_list.user.email %>
                   <% if cars_todo_list.pickedup? %>
