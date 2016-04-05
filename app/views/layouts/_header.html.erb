@@ -46,6 +46,8 @@
                                   <b style="color:#98173E">Admin</b></li>
                                   <% elsif current_user.technician? %>
                                   <b style="color:#1A711B"><%= current_user.email%></b></li>
+                                  <% elsif current_user.cashier? %>
+                                  <b style="color:#1A711B"><%= current_user.email%></b></li>
                               <%else %>
                                 <%= current_user.email %></li>
                               <% end %>

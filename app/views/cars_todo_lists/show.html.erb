@@ -14,7 +14,7 @@
            <%= link_to "Mark as Picked Up", picked_up_cars_todo_list_path(@cars_todo_list.id), method: :patch, data: {confirm: "Are you Sure you want to mark car ready for pickup??"},class: "btn btn-primary" %>
         <% end %>
 <% end %>
-<% if current_user.email==@cars_todo_list.user.email || current_user.admin? || current_user.technician? %>
+<% if current_user.email==@cars_todo_list.user.email || current_user.admin? || current_user.technician? || current_user.cashier? %>
 <h2><strong>Plate Number:</strong>
   <%= @cars_todo_list.car_plate_number %>
 </h2>

@@ -1,6 +1,6 @@
 <div class="well">
 
-<% if current_user.admin? || current_user.technician? %>
+<% if current_user.admin? || current_user.technician? || current_user.cashier? %>
 <h1 style="color: #888">Car Service History</h1>
 <%= render 'tableheader' %>
   <%   @cars_todo_lists.order('created_at desc').each  do |cars_todo_list| %>

@@ -9,8 +9,9 @@
 		   <li style="color:#98173E"> Admin </li>
        <% elsif current_user.technician? %>
        <li style="color:#1A711B"> Technician </li>
+      <% elsif current_user.cashier? %>
+       <li style="color:#1A711B"> Cashier </li>
       <% else %>
-   
       <li><%= current_user.name %></li>
       <% end %>
   

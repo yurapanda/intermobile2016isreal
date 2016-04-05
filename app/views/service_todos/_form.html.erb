@@ -1,5 +1,5 @@
 
-<% if current_user.admin? || current_user.technician? %>
+<% if current_user.admin? || current_user.technician? || current_user.cashier? %>
 	<%= form_for([@cars_todo_list, @cars_todo_list.service_todos.build]) do |f| %>
 		<% if @cars_todo_list.ready_for_pickup? %>
 
