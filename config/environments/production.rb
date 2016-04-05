@@ -77,9 +77,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.raise_delivery_errors = true 
-
-  config.action_mailer.perform_deliveries = true
 
   config.action_mailer.default_url_options = { host: 'https://secret-ridge-88535.herokuapp.com/' }
 
@@ -93,9 +90,8 @@ Rails.application.configure do
   authentication: "plain",
   enable_starttls_auto: true,
   user_name: ENV["GMAIL_USERNAME"],
-  password: ENV["GMAIL_PASSWORD"]
-
- 
+  password: ENV["GMAIL_PASSWORD"], 
+  openssl_verify_mode: 'none'
 
   }
 end
