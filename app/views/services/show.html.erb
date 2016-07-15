@@ -6,7 +6,7 @@
 	  <h3><small>Service Cost: <br></small><strong>PHP <%= @service.cost %>0</strong></h3>
 	</p>
 <hr>
-<% if current_user.email == "jerrome@gmail.com"%>
+<% if current_user.admin? %>
 <%= link_to 'Edit', edit_service_path(@service), class: "btn btn-default" %> 
 
 <% end %>

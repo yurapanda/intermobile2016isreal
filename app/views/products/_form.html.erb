@@ -13,7 +13,7 @@
 
 
 
-<% if current_user.email=="jerrome@gmail.com" %>
+<% if current_user.admin? %>
   <%= simple_form_for(@product) do |f| %>
          <% if @product.errors.any? %>
             <div id="error_explanation">

@@ -1,4 +1,4 @@
- <% if user_signed_in? %>
+<!--  <% if user_signed_in? %>
 <div class="container">
   <div class="transitions-enabled" id="sidepanel">
      <div class="box panel panel-default">
@@ -14,7 +14,7 @@
       <% else %>
       <li><%= current_user.name %></li>
       <% end %>
-  
+  <%= image_tag current_user.avatar %>
 			<hr>
 			<li><%= link_to "Change Account Details", edit_user_registration_path %></li>
 			
@@ -23,4 +23,4 @@
   </div>
 </div>
 <% else %>
-<%end %>
+<%end %> -->

@@ -1,5 +1,5 @@
 
-<% if current_user.email == "jerrome@gmail.com" %>
+<% if current_user.admin || current_user.technician || current_user.cashier? %>
 <h3> Advanced Search </h3>
 
 <%= simple_form_for @search do |f| %>

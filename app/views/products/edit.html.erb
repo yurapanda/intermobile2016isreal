@@ -1,4 +1,4 @@
-<% if current_user.email == "jerrome@gmail.com"%>
+<% if current_user.admin? %>
 <h1>Editing Product</h1>
 
 <%= render 'form' %>

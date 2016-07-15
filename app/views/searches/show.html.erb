@@ -24,7 +24,7 @@
               <td> <%= link_to cars_todo_list.id, cars_todo_list %> </td>
               <td> <%= link_to cars_todo_list.car_plate_number, cars_todo_list %> </td>
               <td> <%= cars_todo_list.car_model %> </td>
-              <td> <%= cars_todo_list.owner_name %> </td>
+              <td> <%= cars_todo_list.user.email%> </td>
 	                <% if cars_todo_list.ready_for_pickup? %>
 	                   <td><font color="green">Car is Ready for Pickup<span class="glyphicon glyphicon-ok-circle"> </span></font></td>
 	                <% elsif cars_todo_list.pickedup?  %>
