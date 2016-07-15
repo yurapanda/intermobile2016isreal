@@ -89,8 +89,8 @@ Rails.application.configure do
   domain: "example.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: ENV["GMAIL_USERNAME"],
-  password: ENV["GMAIL_PASSWORD"], 
+  user_name: ENV["SENDGRID_USERNAME"],
+  password: ENV["SENDGRID_PASSWORD"], 
   :openssl_verify_mode => 'none'
 
   }
